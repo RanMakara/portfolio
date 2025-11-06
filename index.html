@@ -10,140 +10,10 @@
 
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-  <style>
-    /* General Styles */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; scroll-behavior:smooth; transition: all 0.4s ease; }
-    body { background: linear-gradient(135deg, #a4cce7, #e3f3fb); overflow-x:hidden; }
-
-    /* Header */
-    header {
-      width:100%; padding:20px 80px; display:flex; justify-content:space-between; align-items:center;
-      position:fixed; top:0; left:0; z-index:1000;
-      background: rgba(255,255,255,0.3); backdrop-filter:blur(15px);
-      border-radius:0 0 20px 20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); transition:0.3s;
-    }
-    .logo { color:#1f71a1; font-size:1.8em; font-weight:700; text-decoration:none; }
-    header ul { display:flex; list-style:none; transition:0.4s; }
-    header ul li a { color:#1f71a1; font-weight:600; text-decoration:none; padding:10px 20px; border-radius:25px; transition:0.3s; }
-    header ul li a:hover, .active { background:#fff; box-shadow:0 0 10px rgba(31,113,161,0.4); }
-
-    /* Mobile Menu */
-    .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
-    .menu-toggle span { background:#1f71a1; height:3px; width:25px; margin:4px 0; border-radius:5px; }
-    @media (max-width: 992px){
-      header { padding:15px 30px; }
-      header ul { position:absolute; top:80px; left:0; background: rgba(255,255,255,0.95); width:100%; flex-direction:column; align-items:center; display:none; }
-      header ul.active { display:flex; }
-      .menu-toggle { display:flex; }
-    }
-
-    /* Dark Mode Toggle Button */
-    #dark-toggle {
-      margin-left:20px;
-      padding:8px 15px;
-      border:none;
-      border-radius:8px;
-      background:#1f71a1;
-      color:#fff;
-      cursor:pointer;
-      font-weight:600;
-    }
-
-    /* Hero Section */
-    section { min-height:100vh; display:flex; align-items:center; justify-content:space-between; padding:120px 80px; }
-    .content { max-width:600px; }
-    .content h2 { font-size:3em; color:#1f71a1; margin-bottom:10px; }
-    .typing { color:#fff; background:#1f71a1; padding:0 10px; border-radius:8px; overflow:hidden; white-space:nowrap; border-right:3px solid #fff; font-weight:700; }
-    .content p { font-size:1.1em; color:#1f71a1; margin-bottom:25px; }
-    .content a { display:inline-block; padding:12px 30px; background:#fff; color:#1f71a1; border-radius:30px; text-decoration:none; font-weight:600; transition:0.3s; }
-    .content a:hover { background:#1f71a1; color:#fff; transform:scale(1.05); box-shadow:0 0 15px rgba(31,113,161,0.6); }
-    .imgBox img { width:400px; border-radius:20px; animation:float 4s ease-in-out infinite; box-shadow:0 15px 35px rgba(0,0,0,0.2); }
-    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
-
-    /* About Section - Timeline */
-    #about { background:#f0f9ff; padding:100px 80px; }
-    #about h2 { font-size:2.8em; color:#1f71a1; margin-bottom:60px; text-align:center; }
-    .timeline-wrapper { display:flex; align-items:flex-start; gap:60px; flex-wrap:wrap; justify-content:center; }
-    .about-image { flex:1; min-width:300px; text-align:center; }
-    .about-image img { max-width:350px; border-radius:20px; box-shadow:0 15px 35px rgba(0,0,0,0.2); animation: float 4s ease-in-out infinite; }
-    .timeline { flex:1.2; min-width:320px; position:relative; padding-left:40px; }
-    .timeline::before { content:''; position:absolute; left:20px; top:0; width:4px; height:0; background: linear-gradient(to bottom,#1f71a1,#3ea5d5); border-radius:2px; transition:height 1s ease-out; }
-    .timeline.line-active::before { height:100%; }
-    .timeline-item { position:relative; margin-bottom:50px; padding-left:30px; transition: transform 0.3s, box-shadow 0.3s; }
-    .timeline-item::before { content:''; position:absolute; left:-6px; top:0; width:16px; height:16px; background:#1f71a1; border-radius:50%; border:3px solid #fff; box-shadow:0 0 10px rgba(31,113,161,0.4); transform:scale(0); transition:transform 0.5s, box-shadow 0.3s, background 0.3s; }
-    .timeline-item.show::before { transform:scale(1); }
-    .timeline-item:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-    .timeline-item:hover::before { background:#3ea5d5; transform:scale(1.3); box-shadow:0 0 15px rgba(62,165,213,0.8); }
-    .timeline-date { font-weight:700; color:#1f71a1; margin-bottom:8px; transition:color 0.3s; }
-    .timeline-item:hover .timeline-date { color:#3ea5d5; }
-    .timeline-content h4 { font-size:1.2em; color:#1f71a1; margin-bottom:5px; transition:color 0.3s; }
-    .timeline-item:hover .timeline-content h4 { color:#3ea5d5; }
-    .timeline-content p { font-size:0.95em; color:#555; line-height:1.6em; transition:color 0.3s; }
-    .timeline-item:hover .timeline-content p { color:#1f71a1; }
-
-    /* Skills Section */
-    #skills { background: linear-gradient(135deg, #e8f6ff, #d4ecf7); padding:100px 80px; text-align:center; }
-    #skills h2 { font-size:2.5em; color:#1f71a1; margin-bottom:50px; }
-    .skill-box { max-width:800px; margin:20px auto; text-align:left; }
-    .skill-title { font-weight:600; color:#1f71a1; margin-bottom:8px; }
-    .progress-bar { background:#cde9f7; height:14px; border-radius:10px; overflow:hidden; margin-bottom:25px; box-shadow: inset 0 0 5px rgba(0,0,0,0.1); }
-    .progress { height:100%; border-radius:10px; width:0; background: linear-gradient(90deg,#1f71a1,#3ea5d5,#1f71a1); background-size:200% 100%; animation: shine 2s linear infinite; transition:width 2s ease-in-out; }
-    @keyframes shine { 0% {background-position:0 0;} 100% {background-position:200% 0;} }
-
-    /* Projects Section */
-    #project { padding:100px 80px; background: linear-gradient(135deg, #e3f3fb, #c6e3f7); text-align:center; }
-    #project h2 { font-size:2.5em; color:#1f71a1; margin-bottom:40px; }
-    .project-container { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
-    .project-card { background: rgba(255,255,255,0.85); width:300px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); overflow:hidden; transition:0.4s; }
-    .project-card:hover { transform: translateY(-15px) scale(1.03); box-shadow:0 20px 40px rgba(0,0,0,0.2); }
-    .project-card img { width:100%; height:200px; object-fit:cover; transition: transform 0.4s, filter 0.4s; }
-    .project-card:hover img { transform: scale(1.1) rotate(1deg); filter: brightness(1.1); }
-    .project-card h3 { color:#1f71a1; padding:15px 0; }
-    .project-card p { padding:0 20px 20px; color:#555; }
-
-    /* Contact Section */
-    #contact { padding:100px 80px; background:#1f71a1; color:#fff; text-align:center; }
-    #contact h2 { font-size:2.5em; margin-bottom:20px; }
-    #contact p { font-size:1.1em; margin-bottom:30px; }
-    .contact-links a { display:inline-block; margin:10px; padding:12px 25px; background:#fff; color:#1f71a1; border-radius:30px; text-decoration:none; font-weight:600; transition:0.3s; }
-    .contact-links a:hover { background:#3ea5d5; color:#fff; transform:scale(1.05); box-shadow:0 0 15px rgba(255,255,255,0.5); }
-
-    footer { text-align:center; padding:20px; background:#fff; color:#1f71a1; }
-
-    /* Dark Mode */
-    body.dark {
-      background: #111;
-      color: #eee;
-    }
-    body.dark header {
-      background: rgba(20,20,20,0.8);
-      backdrop-filter: blur(15px);
-    }
-    body.dark .logo, body.dark header ul li a { color: #eee; }
-    body.dark .content h2, body.dark .content p, body.dark .timeline-date, 
-    body.dark .timeline-content h4, body.dark .timeline-content p, body.dark .skill-title,
-    body.dark #project h2, body.dark #project .project-card h3, body.dark #project .project-card p { color: #eee; }
-    body.dark .content a, body.dark .contact-links a { background: #1f71a1; color: #fff; }
-    body.dark .content a:hover, body.dark .contact-links a:hover { background: #fff; color: #1f71a1; }
-    body.dark .timeline::before { background: linear-gradient(to bottom,#eee,#ccc); }
-    body.dark .timeline-item::before { background: #eee; border-color: #111; }
-    body.dark #skills { background: #222; }
-    body.dark #project { background: #222; }
-    body.dark #contact { background: #111; }
-    body.dark footer { background: #111; color: #eee; }
-
-    @media(max-width:992px){
-      section { flex-direction: column; text-align:center; padding:120px 40px; }
-      .imgBox img { margin-top:40px; width:300px; }
-      .timeline-wrapper { flex-direction: column; align-items: center; }
-      .about-image img { margin-bottom: 40px; }
-      .timeline { padding-left:0; }
-      .timeline::before { left:50%; transform: translateX(-50%); }
-      .timeline-item { padding-left:0; text-align:center; }
-      .timeline-item::before { left:50%; transform: translateX(-50%); }
-    }
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -158,7 +28,7 @@
     <li><a href="#project">Project</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button id="dark-toggle">Dark Mode</button>
+  <button id="darkModeToggle" class="dark-btn">Dark Mode</button>
 </header>
 
 <!-- Hero Section -->
@@ -182,21 +52,21 @@
     </div>
     <div class="timeline">
       <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-        <div class="timeline-date">2021</div>
+        <div class="timeline-date">2022</div>
         <div class="timeline-content">
           <h4>Started IT Studies</h4>
           <p>Began my journey as an IT student, learning fundamentals of programming, databases, and web development.</p>
         </div>
       </div>
       <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
-        <div class="timeline-date">2022</div>
+        <div class="timeline-date">2023</div>
         <div class="timeline-content">
           <h4>Front-End Development</h4>
           <p>Focused on HTML, CSS, JavaScript, and modern frameworks to build responsive web applications.</p>
         </div>
       </div>
       <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-        <div class="timeline-date">2023</div>
+        <div class="timeline-date">2024</div>
         <div class="timeline-content">
           <h4>Projects & Portfolio</h4>
           <p>Developed projects including Computer Store Management, Student Management System, and my Portfolio Website.</p>
@@ -206,7 +76,7 @@
         <div class="timeline-date">2025</div>
         <div class="timeline-content">
           <h4>Aspiring Software Engineer</h4>
-          <p>Currently focusing on improving coding skills, learning frameworks, and contributing to real-world projects.</p>
+          <p>Currently focusing on improving coding skills.</p>
         </div>
       </div>
     </div>
@@ -216,46 +86,51 @@
 <!-- Skills Section -->
 <section id="skills" data-aos="fade-up">
   <h2>My Skills</h2>
+
   <div class="skill-box">
     <div class="skill-title">HTML / CSS</div>
-    <div class="progress-bar"><div class="progress" data-skill="95"></div></div>
-  </div>
-  <div class="skill-box">
-    <div class="skill-title">JavaScript</div>
-    <div class="progress-bar"><div class="progress" data-skill="85"></div></div>
-  </div>
-  <div class="skill-box">
-    <div class="skill-title">Java (JSP / Servlet)</div>
     <div class="progress-bar"><div class="progress" data-skill="90"></div></div>
   </div>
+
+  <div class="skill-box">
+    <div class="skill-title">JavaScript</div>
+    <div class="progress-bar"><div class="progress" data-skill="65"></div></div>
+  </div>
+
+  <div class="skill-box">
+    <div class="skill-title">Java (JSP / Servlet)</div>
+    <div class="progress-bar"><div class="progress" data-skill="70"></div></div>
+  </div>
+
   <div class="skill-box">
     <div class="skill-title">MySQL</div>
-    <div class="progress-bar"><div class="progress" data-skill="80"></div></div>
+    <div class="progress-bar"><div class="progress" data-skill="60"></div></div>
   </div>
+
   <div class="skill-box">
     <div class="skill-title">PHP</div>
     <div class="progress-bar"><div class="progress" data-skill="75"></div></div>
   </div>
 </section>
 
-<!-- Projects Section -->
-<section id="project">
-  <h2 data-aos="fade-up">Projects</h2>
+<!-- Project Section -->
+<section id="project" data-aos="fade-up">
+  <h2>Projects</h2>
   <div class="project-container">
     <div class="project-card" data-aos="zoom-in">
       <img src="https://raw.githubusercontent.com/RanMakara/portfolio/main/project1.jpg" alt="Project 1">
       <h3>Computer Store Management</h3>
-      <p>A web app to manage customers, orders, and sales efficiently using JSP + MySQL.</p>
+      <p>PHP & MySQL application for managing inventory, sales, and customers.</p>
+    </div>
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://raw.githubusercontent.com/RanMakara/portfolio/main/project2.jpg" alt="Project 2">
+      <h3>Student Management System</h3>
+      <p>Java JSP & MySQL CRUD system for student data, courses, and academic statistics.</p>
     </div>
     <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-      <img src="https://raw.githubusercontent.com/RanMakara/portfolio/main/project2.jpg" alt="Project 2">
-      <h3>Portfolio Website</h3>
-      <p>A personal website to showcase my work, designed with HTML, CSS, and JavaScript.</p>
-    </div>
-    <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
       <img src="https://raw.githubusercontent.com/RanMakara/portfolio/main/project3.jpeg" alt="Project 3">
-      <h3>Student Management</h3>
-      <p>A Java CRUD system for managing student records, academic years, and registrations.</p>
+      <h3>Portfolio Website</h3>
+      <p>Personal responsive portfolio showcasing skills, projects, and contact information.</p>
     </div>
   </div>
 </section>
@@ -263,80 +138,44 @@
 <!-- Contact Section -->
 <section id="contact" data-aos="fade-up">
   <h2>Contact Me</h2>
-  <p>Let’s work together or connect for new opportunities!</p>
-  <div class="contact-links">
-    <a href="https://t.me/RaStormZz_1357">Telegram</a>
-    <a href="mailto:makara.it@example.com">Email</a>
-    <a href="https://raw.githubusercontent.com/RanMakara/portfolio/main/My%20Resume%20(1).pdf">Download CV</a>
-  </div>
+  <p>Let's work together or connect for new opportunities!</p>
+  
+  <ul class="social-buttons">
+    <li>
+      <a href="https://t.me/RaStormZz_1357" target="_blank">
+        <i class="fa-brands fa-telegram"></i>
+        <span>Telegram</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/share/1Cs8gnek2v/?mibextid=wwXIfr" target="_blank">
+        <i class="fa-brands fa-facebook-f"></i>
+        <span>Facebook</span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:makara.it@example.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://raw.githubusercontent.com/RanMakara/portfolio/main/My%20Resume%20(1).pdf" target="_blank">
+        <i class="fa-solid fa-download"></i>
+        <span>Download CV</span>
+      </a>
+    </li>
+  </ul>
 </section>
 
+<!-- Footer -->
 <footer>
-  <p>© 2025 Ran Makara | All Rights Reserved</p>
+  &copy; 2025 Ran Makara | All Rights Reserved.
 </footer>
 
-<!-- Scripts -->
+<!-- External JavaScript -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration:1200, once:true });
+<script src="script.js"></script>
 
-  // Mobile Menu
-  const toggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('nav-links');
-  toggle.onclick = () => nav.classList.toggle('active');
-
-  // Progress bars
-  const progressBars = document.querySelectorAll('.progress');
-  function showProgress() {
-    progressBars.forEach(bar => {
-      const value = bar.getAttribute('data-skill');
-      const pos = bar.getBoundingClientRect().top;
-      const screenHeight = window.innerHeight;
-      if(pos < screenHeight - 100) bar.style.width = value + '%';
-    });
-  }
-  window.addEventListener('scroll', showProgress);
-  window.addEventListener('load', showProgress);
-
-  // Timeline
-  const timeline = document.querySelector('.timeline');
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  function animateTimeline() {
-    const scrollPos = window.scrollY + window.innerHeight;
-    const timelineTop = timeline.offsetTop;
-    if(scrollPos > timelineTop + 50) timeline.classList.add('line-active');
-    timelineItems.forEach(item => {
-      const itemTop = item.getBoundingClientRect().top + window.scrollY;
-      if(scrollPos > itemTop + 50) item.classList.add('show');
-    });
-  }
-  window.addEventListener('scroll', animateTimeline);
-  window.addEventListener('load', animateTimeline);
-
-  // Typing effect
-  const roles = ["Developer", "RaSmosSne", "Innovator"];
-  let i = 0, j = 0, currentText = '', isDeleting = false;
-  const typingEl = document.getElementById('typing');
-  function type() {
-    const fullText = roles[i];
-    if(isDeleting) { currentText = fullText.substring(0, currentText.length-1); }
-    else { currentText = fullText.substring(0, currentText.length+1); }
-    typingEl.textContent = currentText;
-    let typeSpeed = isDeleting ? 100 : 200;
-    if(!isDeleting && currentText === fullText) { typeSpeed = 1000; isDeleting=true; }
-    else if(isDeleting && currentText === '') { isDeleting=false; i=(i+1)%roles.length; typeSpeed=500; }
-    setTimeout(type, typeSpeed);
-  }
-  window.addEventListener('load', type);
-
-  // Dark Mode Toggle
-  const darkToggle = document.getElementById('dark-toggle');
-  darkToggle.onclick = () => {
-    document.body.classList.toggle('dark');
-    darkToggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
-  };
-</script>
 </body>
 </html>
-
-
