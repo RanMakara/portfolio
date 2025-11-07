@@ -7,7 +7,7 @@ const navLinks = document.getElementById('nav-links');
 menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 
 // Typing Effect
-const typingText = ["Front-End Developer", "RaSmosSne", "Cybersecurity", "Web Enthusiast"];
+const typingText = ["Front-End", "RaSmosSne", "Cybersecurity", ""];
 let index = 0, charIndex = 0, currentText = "", isDeleting = false;
 const typing = document.getElementById("typing");
 function type() {
@@ -54,4 +54,5 @@ toggleBtn.addEventListener("click", () => {
   const isDark = body.classList.contains("dark-mode");
   toggleBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
   localStorage.setItem("theme", isDark ? "dark" : "light");
+
 });
